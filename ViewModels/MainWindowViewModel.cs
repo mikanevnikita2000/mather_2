@@ -7,9 +7,9 @@ namespace mather_2.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private string _otvet = "0";
+        private string answer = "0";
         private string _visibleExpression = "0"; 
-        private string torf = "false";
+        private string correct_answer_or_not = "false";
         private string _num1 = "0";
         private string _num2 = "0";
 
@@ -18,22 +18,21 @@ namespace mather_2.ViewModels
         {
             int num1 = 0;
             int num2 = 0;
-            int otvet = 0;
+            int answer = 0;
             string visibleExpression = "";
             int resultat = 0;
-            bool rorf = false;
+            bool correct_answer_or_not = false;
             Random g = new Random();
             num1 = g.Next(100);
             num2 = g.Next(100);
 
 
             visibleExpression = $"{num1}+{num2}";
-            otvet = num1 + num2;
-            if (resultat == otvet)
+            answer = num1 + num2;
+            if (resultat == answer)
             {
-                rorf = true;
+                correct_answer_or_not = true;
             }
-            Torf = rorf.ToString();
         }
 
         public string Num
@@ -49,15 +48,15 @@ namespace mather_2.ViewModels
             set => this.RaiseAndSetIfChanged(ref _num2, value);
         }
 
-        public string Otvet
+        public string Answer
         {
-            get => _otvet;
-            set => this.RaiseAndSetIfChanged(ref _otvet, value);
+            get => answer;
+            set => this.RaiseAndSetIfChanged(ref answer, value);
         }
-        public string Torf
+        public string Сorrect_answer_or_not
         {
-            get => torf;
-            set => this.RaiseAndSetIfChanged(ref torf, value);
+            get => correct_answer_or_not;
+            set => this.RaiseAndSetIfChanged(ref correct_answer_or_not, value);
         }
         public string VisibleExpression
         {
