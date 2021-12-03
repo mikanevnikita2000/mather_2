@@ -7,30 +7,28 @@ namespace mather_2.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private string answer = "0";
+        private string _answer = "0";
         private string _visibleExpression = "0";
-        private string _correct_answer_or_not = "false";
-        private string _num1 = "0";
-        private string _num2 = "0";
+        private string _isCorrect = "false";
+        private string _variableA = "0";
+        private string _variableB = "0";
         private string _resultat = "";
 
         public void Start()
         {
-            int num1 = 0;
-            int num2 = 0;
-            Random g = new Random();
-            num1 = g.Next(100);
-            num2 = g.Next(100);
+            int variableA = 0;
+            int variableB = 0;
+            Random number = new Random();
+            variableA = number.Next(100);
+            variableB = number.Next(100);
             int pressing = 0;
-            string visibleExpression = "";
-            visibleExpression = $"{num1}+{num2}";
-            VisibleExpression = visibleExpression.ToString();
+            VisibleExpression = $"{variableA}+{variableB}";
             
             pressing = Click();
             
             if (pressing==2)
             {
-                Click1(num1, num2);
+                Click1(variableA, variableB);
             }
         }
         public int Click()
@@ -45,25 +43,22 @@ namespace mather_2.ViewModels
             
             return pressing;
         }
-        public void Click1(int num1, int num2)
+        public void Click1(int variableA, int variableB)
         {
             int answer = 0;
             int resultat = 0;
-            Random g = new Random();
             answer = Convert.ToInt32(Answer);
-            resultat = num1 + num2;
+            resultat = variableA + variableB;
             if (resultat == answer)
             {
-                Сorrect_answer_or_not = "true";
+                IsCorrect = "true";
             }
-
-            Сorrect_answer_or_not = "привет";
         }
 
-        public string Num
+        public string A
         {
-            get => _num1;
-            set => this.RaiseAndSetIfChanged(ref _num1, value);
+            get => _variableA;
+            set => this.RaiseAndSetIfChanged(ref _variableA, value);
         }
 
         public string Resultat
@@ -73,21 +68,21 @@ namespace mather_2.ViewModels
         }
 
 
-        public string Num2
+        public string B
         {
-            get => _num2;
-            set => this.RaiseAndSetIfChanged(ref _num2, value);
+            get => _variableB;
+            set => this.RaiseAndSetIfChanged(ref _variableB, value);
         }
 
         public string Answer
         {
-            get => answer;
-            set => this.RaiseAndSetIfChanged(ref answer, value);
+            get => _answer;
+            set => this.RaiseAndSetIfChanged(ref _answer, value);
         }
-        public string Сorrect_answer_or_not
+        public string IsCorrect
         {
-            get => _correct_answer_or_not;
-            set => this.RaiseAndSetIfChanged(ref _correct_answer_or_not, value);
+            get => _isCorrect;
+            set => this.RaiseAndSetIfChanged(ref _isCorrect, value);
         }
         public string VisibleExpression
         {
