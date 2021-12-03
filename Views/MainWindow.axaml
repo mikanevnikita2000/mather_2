@@ -33,9 +33,9 @@
 		<TextBlock Text="{Binding VisibleExpression}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 		<TextBox Text="{Binding Answer}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
 
-		<Button Content="Ответ" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding Click}"/>
+		<Button Content="Ответ" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding Answerbutton}"/>
 
-		<TextBlock Text="{Binding Сorrect_answer_or_not}"  Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<TextBlock Text="{Binding IsCorrect}"  Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 		
 	</Grid>
 	

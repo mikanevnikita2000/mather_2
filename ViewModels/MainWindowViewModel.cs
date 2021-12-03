@@ -21,17 +21,13 @@ namespace mather_2.ViewModels
             Random number = new Random();
             variableA = number.Next(100);
             variableB = number.Next(100);
-            int pressing = 0;
             VisibleExpression = $"{variableA}+{variableB}";
+            /*
+            pressing = Click();*/
+            Answerbutton(variableA, variableB);
             
-            pressing = Click();
-            
-            if (pressing==2)
-            {
-                Click1(variableA, variableB);
-            }
         }
-        public int Click()
+       /* public int Click()
         {
 
             int pressing = 0;
@@ -42,8 +38,8 @@ namespace mather_2.ViewModels
             pressing = pressing + 1;
             
             return pressing;
-        }
-        public void Click1(int variableA, int variableB)
+        }*/
+        public void Answerbutton(int variableA, int variableB)
         {
             int answer = 0;
             int resultat = 0;
