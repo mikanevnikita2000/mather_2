@@ -13,33 +13,24 @@ namespace mather_2.ViewModels
         private string _variableA = "0";
         private string _variableB = "0";
         private string _resultat = "";
+        private int variableA = 0;
+        private int variableB = 0;
+        private bool startOrStopProgram;
 
         public void Start()
         {
-            int variableA = 0;
-            int variableB = 0;
+            startOrStopProgram = true;
+            NLogger.NlogInfo(startOrStopProgram);
+            IsCorrect = "false";
             Random number = new Random();
             variableA = number.Next(100);
             variableB = number.Next(100);
             VisibleExpression = $"{variableA}+{variableB}";
-            /*
-            pressing = Click();*/
-            Answerbutton(variableA, variableB);
+           
             
         }
-       /* public int Click()
-        {
 
-            int pressing = 0;
-            if (pressing==2)
-            {
-                pressing = 0;
-            }
-            pressing = pressing + 1;
-            
-            return pressing;
-        }*/
-        public void Answerbutton(int variableA, int variableB)
+        public void Answerbutton()
         {
             int answer = 0;
             int resultat = 0;
@@ -47,8 +38,11 @@ namespace mather_2.ViewModels
             resultat = variableA + variableB;
             if (resultat == answer)
             {
-                IsCorrect = "true";
+                IsCorrect = "true"; 
+                startOrStopProgram = false;
+                NLogger.NlogInfo(startOrStopProgram);
             }
+            NLogger.NlogWarnAnswer(IsCorrect,VisibleExpression, answer);
         }
 
         public string A
