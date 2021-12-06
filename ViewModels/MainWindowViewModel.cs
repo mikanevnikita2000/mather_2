@@ -1,7 +1,5 @@
 ﻿using ReactiveUI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace mather_2.ViewModels
 {
@@ -15,22 +13,22 @@ namespace mather_2.ViewModels
         private string _resultat = "";
         private int variableA = 0;
         private int variableB = 0;
-        private bool startOrStopProgram;
+        private bool isProgramRuning;
 
         public void Start()
         {
-            startOrStopProgram = true;
-            NLogger.NlogInfo(startOrStopProgram);
+            isProgramRuning = true;
+            NLogger.NlogInfo(isProgramRuning);
             IsCorrect = "false";
-            Random number = new Random();
-            variableA = number.Next(100);
-            variableB = number.Next(100);
+            Random randomNumber = new Random();
+            variableA = randomNumber.Next(100);
+            variableB = randomNumber.Next(100);
             VisibleExpression = $"{variableA}+{variableB}";
            
             
         }
 
-        public void Answerbutton()
+        public void AnswerGetter()
         {
             int answer = 0;
             int resultat = 0;
@@ -38,14 +36,14 @@ namespace mather_2.ViewModels
             resultat = variableA + variableB;
             if (resultat == answer)
             {
-                IsCorrect = "true"; 
-                startOrStopProgram = false;
-                NLogger.NlogInfo(startOrStopProgram);
+                IsCorrect = "true";
+                isProgramRuning = false;
+                NLogger.NlogInfo(isProgramRuning);
             }
             NLogger.NlogWarnAnswer(IsCorrect,VisibleExpression, answer);
         }
 
-        public string A
+        public string VariableA
         {
             get => _variableA;
             set => this.RaiseAndSetIfChanged(ref _variableA, value);
@@ -58,7 +56,7 @@ namespace mather_2.ViewModels
         }
 
 
-        public string B
+        public string VariableB
         {
             get => _variableB;
             set => this.RaiseAndSetIfChanged(ref _variableB, value);
@@ -79,6 +77,8 @@ namespace mather_2.ViewModels
             get => _visibleExpression;
             set => this.RaiseAndSetIfChanged(ref _visibleExpression, value);
         }
+
+        
     }
     
 }

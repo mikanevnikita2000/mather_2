@@ -12,9 +12,9 @@ namespace mather_2
     class NLogger
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        public static void NlogInfo(bool startOrStopProgram)
+        public static void NlogInfo(bool isProgramRuning)
         {
-            if (startOrStopProgram == true)
+            if (isProgramRuning == true)
             {
                 logger.Info("start of the program");
             }

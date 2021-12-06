@@ -29,6 +29,7 @@ namespace mather_2
             {
                 DataContext = new MainWindowViewModel(),
             };
+            
 
             app.Run(window);
         }
