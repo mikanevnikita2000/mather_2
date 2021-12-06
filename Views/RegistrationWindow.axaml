@@ -29,12 +29,10 @@
 			<ColumnDefinition Width="1*"/>
 			<ColumnDefinition Width="1*"/>
 		</Grid.ColumnDefinitions>
-		<TextBlock Text="{Binding VisibleExpression}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-		<TextBox Text="{Binding Answer}" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
+		<TextBox Text="Введите имя" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-		<Button Content="Ответ" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding Answerbutton}"/>
+		<Button Content="Далее" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Answerbutton}"/>
 
-		<TextBlock Text="{Binding IsCorrect}"  Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 		
 	</Grid>
 	

@@ -1,12 +1,12 @@
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
 namespace mather_2.Views
 {
-    public partial class TwoWindow : Window
+    public partial class MenuWindow : Window
     {
-        public TwoWindow()
+        public MenuWindow()
         {
             InitializeComponent();
 #if DEBUG
