@@ -14,6 +14,7 @@ namespace mather_2.ViewModels
         private int variableA = 0;
         private int variableB = 0;
         private bool isProgramRuning;
+        private string znack = "+";
 
         public void Start()
         {
@@ -23,17 +24,53 @@ namespace mather_2.ViewModels
             Random randomNumber = new Random();
             variableA = randomNumber.Next(100);
             variableB = randomNumber.Next(100);
-            VisibleExpression = $"{variableA}+{variableB}";
+            VisibleExpression = $"{variableA} {znack} {variableB}";
            
             
         }
-
+        public string Slo()
+        {
+            znack = "+";
+            return znack;
+        }
+        public string Vech()
+        {
+            znack = "-";
+            return znack;
+        }
+        public string Umno()
+        {
+            znack = "*";
+            return znack;
+        }
+        public string Del()
+        {
+            znack = "/";
+            return znack;
+        }
         public void AnswerGetter()
         {
             int answer = 0;
             int resultat = 0;
             answer = Convert.ToInt32(Answer);
-            resultat = variableA + variableB;
+
+            if (znack == "+")
+            {
+                resultat = variableA + variableB;
+            }
+            if (znack == "-")
+            {
+                resultat = variableA - variableB;
+            }
+            if (znack == "*")
+            {
+                resultat = variableA * variableB;
+            }
+            if (znack == "/")
+            {
+                resultat = variableA / variableB;
+            }
+
             if (resultat == answer)
             {
                 IsCorrect = "true";
@@ -54,7 +91,6 @@ namespace mather_2.ViewModels
             get => _resultat;
             set => this.RaiseAndSetIfChanged(ref _resultat, value);
         }
-
 
         public string VariableB
         {
@@ -77,8 +113,5 @@ namespace mather_2.ViewModels
             get => _visibleExpression;
             set => this.RaiseAndSetIfChanged(ref _visibleExpression, value);
         }
-
-        
     }
-    
 }
