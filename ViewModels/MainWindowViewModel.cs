@@ -18,8 +18,6 @@ namespace mather_2.ViewModels
         private string _resultatEnd = "";
         private string _visibleExpressionBack = "";
         int resultat = 0;
-        private string _variableABack = "0";
-        private string _variableBBack = "0";
         private int variableABack = 0;
         private int variableBBack = 0;
         private string _znackBack = "+";
@@ -130,21 +128,6 @@ namespace mather_2.ViewModels
             get => _variableA;
             set => this.RaiseAndSetIfChanged(ref _variableA, value);
         }
-        public string VariableABack
-        {
-            get => _variableABack;
-            set => this.RaiseAndSetIfChanged(ref _variableABack, value);
-        }
-        public string VariableBBack
-        {
-            get => _variableBBack;
-            set => this.RaiseAndSetIfChanged(ref _variableBBack, value);
-        }
-        public string ZnackBack
-        {
-            get => _znackBack;
-            set => this.RaiseAndSetIfChanged(ref _znackBack, value);
-        }
         public string ResultatEnd
         {
             get => _resultatEnd;
@@ -155,13 +138,11 @@ namespace mather_2.ViewModels
             get => _resultat;
             set => this.RaiseAndSetIfChanged(ref _resultat, value);
         }
-
         public string VariableB
         {
             get => _variableB;
             set => this.RaiseAndSetIfChanged(ref _variableB, value);
         }
-
         public string Answer
         {
             get => _answer;
