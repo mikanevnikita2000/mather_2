@@ -8,7 +8,7 @@
    	 Icon="/Assets/avalonia-logo.ico"
    	 Title="mather_2"
 	 Width="900" Height="500"
-		Background="#FF00FF"
+		Background="#A9A9A9"
         BorderBrush="Black"
         BorderThickness="2"
         CornerRadius="5"
@@ -21,6 +21,13 @@
 		<Style Selector="Button">
 			<Setter Property="Margin" Value="5"></Setter>
 		</Style>
+		<Style Selector="Button">
+			<Setter Property="Foreground" Value="#000000" />
+			<Setter Property="BorderThickness" Value="2" />
+			<Setter Property="Background" Value="#778899" />
+			<Setter Property="BorderBrush" Value="#000000" />
+		</Style>
+		
 	</Window.Styles>
 
 	
@@ -40,10 +47,12 @@
 			<ColumnDefinition Width="1*"/>
 			<ColumnDefinition Width="1*"/>
 		</Grid.ColumnDefinitions>
+
 		<Button Content="start" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Start}"/>
 		
 		<TextBlock Text="{Binding VisibleExpression}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 		<TextBox Text="{Binding Answer}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		<TextBlock Text="{Binding ResultatEnd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 		
 		<Button Content="сложение" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Slo}"/>
 		<Button Content="выяитание" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Vech}"/>
@@ -54,8 +63,9 @@
 		<Button Content="деление" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Del}"/>
 		
 		<TextBlock Text="{Binding IsCorrect}"  Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-		
-		
+
+		<Button Content="Back" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Back}"/>
+		<Button Content="?" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Help}"/>
 	</Grid>
 	
 </Window>

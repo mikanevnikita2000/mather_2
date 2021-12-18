@@ -15,6 +15,14 @@ namespace mather_2.ViewModels
         private int variableB = 0;
         private bool isProgramRuning;
         private string znack = "+";
+        private string _resultatEnd = "";
+        private string _visibleExpressionBack = "";
+        int resultat = 0;
+        private string _variableABack = "0";
+        private string _variableBBack = "0";
+        private int variableABack = 0;
+        private int variableBBack = 0;
+        private string _znackBack = "+";
 
         public void Start()
         {
@@ -25,9 +33,35 @@ namespace mather_2.ViewModels
             variableA = randomNumber.Next(100);
             variableB = randomNumber.Next(100);
             VisibleExpression = $"{variableA} {znack} {variableB} = ";
-           
-            
+            ResultatEnd = "";
+
+
         }
+
+        public void Help()
+        {
+            if (znack == "+")
+            {
+                resultat = variableA + variableB;
+                ResultatEnd = Convert.ToString(resultat);
+            }
+            if (znack == "-")
+            {
+                resultat = variableA - variableB;
+                ResultatEnd = Convert.ToString(resultat);
+            }
+            if (znack == "*")
+            {
+                resultat = variableA * variableB;
+                ResultatEnd = Convert.ToString(resultat);
+            }
+            if (znack == "/")
+            {
+                resultat = variableA / variableB;
+                ResultatEnd = Convert.ToString(resultat);
+            }
+        }
+
         public string Slo()
         {
             znack = "+";
@@ -48,10 +82,19 @@ namespace mather_2.ViewModels
             znack = "/";
             return znack;
         }
+
+        public void Back()
+        {
+            VisibleExpression = VisibleExpressionBack;
+            variableA = variableABack;
+            variableB = variableBBack;
+            znack = _znackBack;
+        }
+
         public void AnswerGetter()
         {
             int answer ;
-            int resultat = 0;
+            
             answer = Convert.ToInt32(Answer);
 
             if (znack == "+")
@@ -75,9 +118,11 @@ namespace mather_2.ViewModels
             {
                 IsCorrect = "true";
                 isProgramRuning = false;
-                NLogger.NlogInfo(isProgramRuning);
+                VisibleExpressionBack = $"{variableA} {znack} {variableB} = ";
+                variableABack = variableA;
+                variableBBack = variableB;
+                _znackBack = znack;          
             }
-            NLogger.NlogWarnAnswer(IsCorrect,VisibleExpression, answer);
         }
 
         public string VariableA
@@ -85,7 +130,26 @@ namespace mather_2.ViewModels
             get => _variableA;
             set => this.RaiseAndSetIfChanged(ref _variableA, value);
         }
-
+        public string VariableABack
+        {
+            get => _variableABack;
+            set => this.RaiseAndSetIfChanged(ref _variableABack, value);
+        }
+        public string VariableBBack
+        {
+            get => _variableBBack;
+            set => this.RaiseAndSetIfChanged(ref _variableBBack, value);
+        }
+        public string ZnackBack
+        {
+            get => _znackBack;
+            set => this.RaiseAndSetIfChanged(ref _znackBack, value);
+        }
+        public string ResultatEnd
+        {
+            get => _resultatEnd;
+            set => this.RaiseAndSetIfChanged(ref _resultatEnd, value);
+        }
         public string Resultat
         {
             get => _resultat;
@@ -107,6 +171,11 @@ namespace mather_2.ViewModels
         {
             get => _isCorrect;
             set => this.RaiseAndSetIfChanged(ref _isCorrect, value);
+        }
+        public string VisibleExpressionBack
+        {
+            get => _visibleExpressionBack;
+            set => this.RaiseAndSetIfChanged(ref _visibleExpressionBack, value);
         }
         public string VisibleExpression
         {
