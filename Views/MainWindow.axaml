@@ -7,7 +7,7 @@
    	 x:Class="mather_2.Views.MainWindow"
    	 Icon="/Assets/avalonia-logo.ico"
    	 Title="mather_2"
-	 Width="900" Height="500"
+	 Width="550" Height="500"
 		Background="#A9A9A9"
         BorderBrush="Black"
         BorderThickness="2"
