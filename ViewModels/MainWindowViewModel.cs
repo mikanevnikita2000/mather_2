@@ -24,7 +24,7 @@ namespace mather_2.ViewModels
             Random randomNumber = new Random();
             variableA = randomNumber.Next(100);
             variableB = randomNumber.Next(100);
-            VisibleExpression = $"{variableA} {znack} {variableB}";
+            VisibleExpression = $"{variableA} {znack} {variableB} = ";
            
             
         }
@@ -50,7 +50,7 @@ namespace mather_2.ViewModels
         }
         public void AnswerGetter()
         {
-            int answer = 0;
+            int answer ;
             int resultat = 0;
             answer = Convert.ToInt32(Answer);
 
