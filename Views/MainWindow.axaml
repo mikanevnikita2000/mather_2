@@ -50,12 +50,12 @@
 
 		<Button Content="start" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Start}"/>
 		
-		<TextBlock Text="{Binding VisibleExpression}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<TextBlock Text="{Binding VisibleExpression}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 		<TextBox Text="{Binding Answer}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
-		<TextBlock Text="{Binding ResultatEnd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<TextBlock Text="{Binding ResultEnd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 		
 		<Button Content="сложение" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Slo}"/>
-		<Button Content="выяитание" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Vech}"/>
+		<Button Content="вычитание" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Vech}"/>
 		
 		<Button Content="Ответ" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding AnswerGetter}"/>
 		

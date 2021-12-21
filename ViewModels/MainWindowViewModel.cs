@@ -10,17 +10,17 @@ namespace mather_2.ViewModels
         private string _isCorrect = "false";
         private string _variableA = "0";
         private string _variableB = "0";
-        private string _resultat = "";
+        private string _result = "";
         private int variableA = 0;
         private int variableB = 0;
         private bool isProgramRuning;
-        private string znack = "+";
-        private string _resultatEnd = "";
+        private string sign = "+";
+        private string _resultEnd = "";
         private string _visibleExpressionBack = "";
-        int resultat = 0;
+        int result = 0;
         private int variableABack = 0;
         private int variableBBack = 0;
-        private string _znackBack = "+";
+        private string _signBack = "+";
 
         public void Start()
         {
@@ -30,55 +30,55 @@ namespace mather_2.ViewModels
             Random randomNumber = new Random();
             variableA = randomNumber.Next(100);
             variableB = randomNumber.Next(100);
-            VisibleExpression = $"{variableA} {znack} {variableB} = ";
-            ResultatEnd = "";
+            VisibleExpression = $"{variableA} {sign} {variableB} = ";
+            ResultEnd = "";
 
 
         }
 
         public void Help()
         {
-            if (znack == "+")
+            if (sign == "+")
             {
-                resultat = variableA + variableB;
-                ResultatEnd = Convert.ToString(resultat);
+                result = variableA + variableB;
+                ResultEnd = Convert.ToString(result);
             }
-            if (znack == "-")
+            if (sign == "-")
             {
-                resultat = variableA - variableB;
-                ResultatEnd = Convert.ToString(resultat);
+                result = variableA - variableB;
+                ResultEnd = Convert.ToString(result);
             }
-            if (znack == "*")
+            if (sign == "*")
             {
-                resultat = variableA * variableB;
-                ResultatEnd = Convert.ToString(resultat);
+                result = variableA * variableB;
+                ResultEnd = Convert.ToString(result);
             }
-            if (znack == "/")
+            if (sign == "/")
             {
-                resultat = variableA / variableB;
-                ResultatEnd = Convert.ToString(resultat);
+                result = variableA / variableB;
+                ResultEnd = Convert.ToString(result);
             }
         }
 
         public string Slo()
         {
-            znack = "+";
-            return znack;
+            sign = "+";
+            return sign;
         }
         public string Vech()
         {
-            znack = "-";
-            return znack;
+            sign = "-";
+            return sign;
         }
         public string Umno()
         {
-            znack = "*";
-            return znack;
+            sign = "*";
+            return sign;
         }
         public string Del()
         {
-            znack = "/";
-            return znack;
+            sign = "/";
+            return sign;
         }
 
         public void Back()
@@ -86,7 +86,7 @@ namespace mather_2.ViewModels
             VisibleExpression = VisibleExpressionBack;
             variableA = variableABack;
             variableB = variableBBack;
-            znack = _znackBack;
+            sign = _signBack;
         }
 
         public void AnswerGetter()
@@ -95,31 +95,31 @@ namespace mather_2.ViewModels
             
             answer = Convert.ToInt32(Answer);
 
-            if (znack == "+")
+            if (sign == "+")
             {
-                resultat = variableA + variableB;
+                result = variableA + variableB;
             }
-            if (znack == "-")
+            if (sign == "-")
             {
-                resultat = variableA - variableB;
+                result = variableA - variableB;
             }
-            if (znack == "*")
+            if (sign == "*")
             {
-                resultat = variableA * variableB;
+                result = variableA * variableB;
             }
-            if (znack == "/")
+            if (sign == "/")
             {
-                resultat = variableA / variableB;
+                result = variableA / variableB;
             }
 
-            if (resultat == answer)
+            if (result == answer)
             {
                 IsCorrect = "true";
                 isProgramRuning = false;
-                VisibleExpressionBack = $"{variableA} {znack} {variableB} = ";
+                VisibleExpressionBack = $"{variableA} {sign} {variableB} = ";
                 variableABack = variableA;
                 variableBBack = variableB;
-                _znackBack = znack;          
+                _signBack = sign;          
             }
         }
 
@@ -128,15 +128,15 @@ namespace mather_2.ViewModels
             get => _variableA;
             set => this.RaiseAndSetIfChanged(ref _variableA, value);
         }
-        public string ResultatEnd
+        public string ResultEnd
         {
-            get => _resultatEnd;
-            set => this.RaiseAndSetIfChanged(ref _resultatEnd, value);
+            get => _resultEnd;
+            set => this.RaiseAndSetIfChanged(ref _resultEnd, value);
         }
-        public string Resultat
+        public string Result
         {
-            get => _resultat;
-            set => this.RaiseAndSetIfChanged(ref _resultat, value);
+            get => _result;
+            set => this.RaiseAndSetIfChanged(ref _result, value);
         }
         public string VariableB
         {
