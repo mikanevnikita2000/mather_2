@@ -60,22 +60,22 @@ namespace mather_2.ViewModels
             }
         }
 
-        public string Slo()
+        public string Addition()
         {
             sign = "+";
             return sign;
         }
-        public string Vech()
+        public string Subtraction()
         {
             sign = "-";
             return sign;
         }
-        public string Umno()
+        public string Multiplication()
         {
             sign = "*";
             return sign;
         }
-        public string Del()
+        public string Division()
         {
             sign = "/";
             return sign;

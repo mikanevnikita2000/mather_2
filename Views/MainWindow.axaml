@@ -54,13 +54,13 @@
 		<TextBox Text="{Binding Answer}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
 		<TextBlock Text="{Binding ResultEnd}" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 		
-		<Button Content="сложение" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Slo}"/>
-		<Button Content="вычитание" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Vech}"/>
+		<Button Content="сложение" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Addition}"/>
+		<Button Content="вычитание" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Subtraction}"/>
 		
 		<Button Content="Ответ" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding AnswerGetter}"/>
 		
-		<Button Content="умножение" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Umno}"/>
-		<Button Content="деление" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Del}"/>
+		<Button Content="умножение" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Multiplication}"/>
+		<Button Content="деление" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Division}"/>
 		
 		<TextBlock Text="{Binding IsCorrect}"  Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
