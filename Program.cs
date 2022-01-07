@@ -1,7 +1,6 @@
 ﻿using System;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.ReactiveUI;
 using mather_2.ViewModels;
 using mather_2.Views;

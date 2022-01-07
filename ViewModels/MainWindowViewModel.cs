@@ -5,128 +5,80 @@ namespace mather_2.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private string _answer = "0";
-        private string _visibleExpression = "0";
-        private string _isCorrect = "false";
-        private string _variableA = "0";
-        private string _variableB = "0";
+        private string _answer = " ";
+        private int answer ;
+        private string _visibleExpression = " ";
+        private string _variableA = " ";
+        private string _variableB = " ";
         private string _result = "";
-        private int variableA = 0;
-        private int variableB = 0;
-        private bool isProgramRuning;
         private string sign = "+";
         private string _resultEnd = "";
         private string _visibleExpressionBack = "";
-        int result = 0;
-        private int variableABack = 0;
-        private int variableBBack = 0;
-        private string _signBack = "+";
+        private string message = "";
+        private string _isCorrectTrue = "";
+        private string _isCorrectFalse = "";
 
         public void Start()
         {
-            isProgramRuning = true;
-            NLogger.NlogInfo(isProgramRuning);
-            IsCorrect = "false";
-            Random randomNumber = new Random();
-            variableA = randomNumber.Next(100);
-            variableB = randomNumber.Next(100);
-            VisibleExpression = $"{variableA} {sign} {variableB} = ";
+            VisibleExpression = Models.Start(sign);
             ResultEnd = "";
-
-
+            IsCorrectTrue = "";
+            IsCorrectFalse = "";
+            Message = "";
         }
 
         public void Help()
         {
-            if (sign == "+")
-            {
-                result = variableA + variableB;
-                ResultEnd = Convert.ToString(result);
-            }
-            if (sign == "-")
-            {
-                result = variableA - variableB;
-                ResultEnd = Convert.ToString(result);
-            }
-            if (sign == "*")
-            {
-                result = variableA * variableB;
-                ResultEnd = Convert.ToString(result);
-            }
-            if (sign == "/")
-            {
-                result = variableA / variableB;
-                ResultEnd = Convert.ToString(result);
-            }
+            ResultEnd = Models.Help();
         }
 
-        public string Addition()
+        public void Addition()
         {
             sign = "+";
-            return sign;
+           
         }
-        public string Subtraction()
+        public void Subtraction()
         {
             sign = "-";
-            return sign;
         }
-        public string Multiplication()
+        public void Multiplication()
         {
             sign = "*";
-            return sign;
         }
-        public string Division()
+        public void Division()
         {
             sign = "/";
-            return sign;
         }
 
         public void Back()
         {
-            VisibleExpression = VisibleExpressionBack;
-            variableA = variableABack;
-            variableB = variableBBack;
-            sign = _signBack;
+            VisibleExpression = Models.Back();
         }
 
         public void AnswerGetter()
         {
-            int answer ;
-            
-            answer = Convert.ToInt32(Answer);
-
-            if (sign == "+")
+            Message = "";
+            try
             {
-                result = variableA + variableB;
+                answer = Convert.ToInt32(Answer);
             }
-            if (sign == "-")
+            catch (Exception e)
             {
-                result = variableA - variableB;
+                Message = "Пиши цыфрами!";
+                Console.WriteLine(e.Message);
             }
-            if (sign == "*")
-            {
-                result = variableA * variableB;
-            }
-            if (sign == "/")
-            {
-                result = variableA / variableB;
-            }
-
-            if (result == answer)
-            {
-                IsCorrect = "true";
-                isProgramRuning = false;
-                VisibleExpressionBack = $"{variableA} {sign} {variableB} = ";
-                variableABack = variableA;
-                variableBBack = variableB;
-                _signBack = sign;          
-            }
+            (IsCorrectTrue, IsCorrectFalse)  = Models.AnswerGetter(answer);
         }
 
         public string VariableA
         {
             get => _variableA;
             set => this.RaiseAndSetIfChanged(ref _variableA, value);
+        }
+        public string Message
+        {
+            get => message;
+            set => this.RaiseAndSetIfChanged(ref message, value);
         }
         public string ResultEnd
         {
@@ -148,10 +100,15 @@ namespace mather_2.ViewModels
             get => _answer;
             set => this.RaiseAndSetIfChanged(ref _answer, value);
         }
-        public string IsCorrect
+        public string IsCorrectTrue
         {
-            get => _isCorrect;
-            set => this.RaiseAndSetIfChanged(ref _isCorrect, value);
+            get => _isCorrectTrue;
+            set => this.RaiseAndSetIfChanged(ref _isCorrectTrue, value);
+        }
+        public string IsCorrectFalse
+        {
+            get => _isCorrectFalse;
+            set => this.RaiseAndSetIfChanged(ref _isCorrectFalse, value);
         }
         public string VisibleExpressionBack
         {
