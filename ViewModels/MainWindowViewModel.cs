@@ -5,11 +5,11 @@ namespace mather_2.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private string _answer = " ";
+        private string _answer = "";
         private int answer ;
-        private string _visibleExpression = " ";
-        private string _variableA = " ";
-        private string _variableB = " ";
+        private string _outputExample = "";
+        private string _variableA = "";
+        private string _variableB = "";
         private string _result = "";
         private string sign = "+";
         private string _resultEnd = "";
@@ -20,7 +20,7 @@ namespace mather_2.ViewModels
 
         public void Start()
         {
-            VisibleExpression = Models.Start(sign);
+            OutputExample = Models.Start(sign);
             ResultEnd = "";
             IsCorrectTrue = "";
             IsCorrectFalse = "";
@@ -52,7 +52,7 @@ namespace mather_2.ViewModels
 
         public void Back()
         {
-            VisibleExpression = Models.Back();
+            OutputExample = Models.Back();
         }
 
         public void AnswerGetter()
@@ -64,11 +64,12 @@ namespace mather_2.ViewModels
             }
             catch (Exception e)
             {
-                Message = "Пиши цыфрами!";
+                Message = "Пиши цифрами!";
                 Console.WriteLine(e.Message);
             }
             (IsCorrectTrue, IsCorrectFalse)  = Models.AnswerGetter(answer);
         }
+        public string Color = "#ff008000";
 
         public string VariableA
         {
@@ -115,10 +116,10 @@ namespace mather_2.ViewModels
             get => _visibleExpressionBack;
             set => this.RaiseAndSetIfChanged(ref _visibleExpressionBack, value);
         }
-        public string VisibleExpression
+        public string OutputExample
         {
-            get => _visibleExpression;
-            set => this.RaiseAndSetIfChanged(ref _visibleExpression, value);
+            get => _outputExample;
+            set => this.RaiseAndSetIfChanged(ref _outputExample, value);
         }
     }
 }

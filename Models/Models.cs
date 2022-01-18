@@ -6,7 +6,7 @@ namespace mather_2
     {
         public static string isCorrectTrue = "";
         public static string isCorrectFalse = "";
-        public static string visibleExpression = "";
+        public static string outputExample = "";
         public static int variableA;
         public static int variableB;
         public static int answer;
@@ -29,30 +29,28 @@ namespace mather_2
                 result = randomNumber.Next(1, 11);
                 variableB = randomNumber.Next(1, 100);
                 variableA = result * variableB;
-                visibleExpression = $"{variableA} / {variableB} = ";
             }
             if (sing == "*")
             {
                 variableA = randomNumber.Next(1, 100);
                 variableB = randomNumber.Next(1, 11);
-                visibleExpression = $"{variableA} * {variableB} = ";
             }
             else
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
-                visibleExpression = $"{variableA} {sing} {variableB} = ";
             }
-            return visibleExpression;
+            outputExample = $"{variableA} {sing} {variableB} = ";
+            return outputExample;
         }
 
         public static string Back()
         {
-            visibleExpression = VisibleExpressionBack;
+            outputExample = VisibleExpressionBack;
             variableA = variableABack;
             variableB = variableBBack;
             sing = signBack;
-            return visibleExpression;
+            return outputExample;
         }
 
         public static (string, string) AnswerGetter(int answer)
