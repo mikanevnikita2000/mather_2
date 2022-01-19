@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace mather_2
+namespace mather_2.Models
 {
     public class Models
     {

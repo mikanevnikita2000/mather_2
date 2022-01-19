@@ -20,7 +20,7 @@ namespace mather_2.ViewModels
 
         public void Start()
         {
-            OutputExample = Models.Start(sign);
+            OutputExample = mather_2.Models.Models.Start(sign);
             ResultEnd = "";
             IsCorrectTrue = "";
             IsCorrectFalse = "";
@@ -29,7 +29,7 @@ namespace mather_2.ViewModels
 
         public void Help()
         {
-            ResultEnd = Models.Help();
+            ResultEnd = mather_2.Models.Models.Help();
         }
 
         public void Addition()
@@ -52,7 +52,7 @@ namespace mather_2.ViewModels
 
         public void Back()
         {
-            OutputExample = Models.Back();
+            OutputExample = mather_2.Models.Models.Back();
         }
 
         public void AnswerGetter()
@@ -67,7 +67,7 @@ namespace mather_2.ViewModels
                 Message = "Пиши цифрами!";
                 Console.WriteLine(e.Message);
             }
-            (IsCorrectTrue, IsCorrectFalse)  = Models.AnswerGetter(answer);
+            (IsCorrectTrue, IsCorrectFalse)  = mather_2.Models.Models.AnswerGetter(answer);
         }
         public string Color = "#ff008000";
 
