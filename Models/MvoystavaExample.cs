@@ -8,33 +8,26 @@ namespace mather_2.Models
 {
     class MvoystavaExample
     {
-        public static string isCorrectTrue = "";
-        public static string isCorrectFalse = "";
-        public static string outputExample = "";
-        public static int variableA;
-        public static int variableB;
-        public static int answer;
-        public static int result = 0;
-        public static string sing = "+";
-        public static string result_end = "";
-        public static int variableABack = 0;
-        public static int variableBBack = 0;
-        public static string signBack = "";
-        public static string VisibleExpressionBack = "";
+        private static string example = "";
+        private static int result = 0;
 
-        static void Example()
+        public static void Example(string outputExample1, int result1)
         {
-            string isCorrectTrue = "";
-            string isCorrectFalse = "";
-            string outputExample = "";
-            int answer;
-            string sing = "+";
-            int outputresult;
-            string outputsing;
+            example = outputExample1;
+            result = result1;
+            
         }
-        static void Answer()
+        public static int Answer()
         {
-            int result = 0;
+            return result;
+        }
+
+        public static string Back()
+        {
+            string outputExample = example;
+            int outputresult = result;
+            mather_2.Models.MvoystavaExample.Example(outputExample, outputresult);
+            return outputExample;
         }
     }
 }

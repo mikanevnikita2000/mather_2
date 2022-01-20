@@ -4,26 +4,21 @@ namespace mather_2.Models
 {
     public class Models
     {
-        public static string isCorrectTrue = "";
-        public static string isCorrectFalse = "";
-        public static string outputExample = "";
-        public static int variableA;
-        public static int variableB;
-        public static int answer;
-        public static int result = 0;
+        public static string CorrectTrue = "";
+        public static string CorrectFalse = "";
         public static string sing = "+";
         public static string result_end = "";
-        public static int variableABack = 0;
-        public static int variableBBack = 0;
-        public static string signBack = "";
-        public static string VisibleExpressionBack = "";
-        public static Random randomNumber = new Random();
 
         public static string Start(string sang)
         {
             sing = sang;
-            isCorrectTrue = "";
-            isCorrectFalse = "";
+            CorrectTrue = "";
+            CorrectFalse = "";
+            int variableA=0;
+            int variableB=0;
+            int result = 0;
+            string outputExample = "";
+            Random randomNumber = new Random();
             if (sing == "/")
             {
                 result = randomNumber.Next(1, 11);
@@ -34,81 +29,57 @@ namespace mather_2.Models
             {
                 variableA = randomNumber.Next(1, 100);
                 variableB = randomNumber.Next(1, 11);
+                result = variableA * variableB;
             }
-            else
+            if (sing == "+")
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
+                result = variableA + variableB;
+            }
+            if (sing == "-")
+            {
+               
+                variableA = randomNumber.Next(100);
+                variableB = randomNumber.Next(100);
+                result = variableA - variableB;
+                
             }
             outputExample = $"{variableA} {sing} {variableB} = ";
+            mather_2.Models.MvoystavaExample.Example(outputExample, result); 
             return outputExample;
         }
 
         public static string Back()
         {
-            outputExample = VisibleExpressionBack;
-            variableA = variableABack;
-            variableB = variableBBack;
-            sing = signBack;
+            string outputExample = "";
+            (outputExample) = mather_2.Models.MvoystavaExample.Back();
             return outputExample;
         }
 
         public static (string, string) AnswerGetter(int answer)
         {
-            isCorrectTrue = "";
-            isCorrectFalse = "";
-            if (sing == "+")
-            {
-                result = variableA + variableB;
-            }
-            if (sing == "-")
-            {
-                result = variableA - variableB;
-            }
-            if (sing == "*")
-            {
-                result = variableA * variableB;
-            }
-            
-
+            int result = 0;
+            CorrectTrue = "";
+            CorrectFalse = "";
+            result = mather_2.Models.MvoystavaExample.Answer();
 
             if (answer == result)
             {
-                isCorrectTrue = "Правильно";
-                VisibleExpressionBack = $"{variableA} {sing} {variableB} = ";
-                variableABack = variableA;
-                variableBBack = variableB;
-                signBack = sing;
+                CorrectTrue = "Правильно";
+                mather_2.Models.MvoystavaExample.Back();
                 result_end = "";
             }
             else
             {
-                isCorrectFalse = "Неправильно";
+                CorrectFalse = "Неправильно";
             }
-            return (isCorrectTrue, isCorrectFalse);
+            return (CorrectTrue, CorrectFalse);
         }
 
         public static string Help()
         {
-            if (sing == "+")
-            {
-                result = variableA + variableB;
-                result_end = Convert.ToString(result);          
-            }
-            if (sing == "-")
-            {
-                result = variableA - variableB;
-                result_end = Convert.ToString(result);
-            }
-            if (sing == "*")
-            {
-                result = variableA * variableB;
-                result_end = Convert.ToString(result);
-            }
-            if (sing == "/")
-            {
-                result_end = Convert.ToString(result);
-            }
+            result_end = Convert.ToString(mather_2.Models.MvoystavaExample.Answer());
             return result_end;
         }
     }
