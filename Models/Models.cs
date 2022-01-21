@@ -46,14 +46,14 @@ namespace mather_2.Models
                 
             }
             outputExample = $"{variableA} {sing} {variableB} = ";
-            mather_2.Models.MvoystavaExample.Example(outputExample, result); 
+            mather_2.Models.FeaturesExample.Example(outputExample, result); 
             return outputExample;
         }
 
         public static string Back()
         {
             string outputExample = "";
-            (outputExample) = mather_2.Models.MvoystavaExample.Back();
+            (outputExample) = mather_2.Models.FeaturesExample.Back();
             return outputExample;
         }
 
@@ -62,12 +62,12 @@ namespace mather_2.Models
             int result = 0;
             CorrectTrue = "";
             CorrectFalse = "";
-            result = mather_2.Models.MvoystavaExample.Answer();
+            result = mather_2.Models.FeaturesExample.Answer();
 
             if (answer == result)
             {
                 CorrectTrue = "Правильно";
-                mather_2.Models.MvoystavaExample.Back();
+                mather_2.Models.FeaturesExample.Back();
                 result_end = "";
             }
             else
@@ -79,7 +79,7 @@ namespace mather_2.Models
 
         public static string Help()
         {
-            result_end = Convert.ToString(mather_2.Models.MvoystavaExample.Answer());
+            result_end = Convert.ToString(mather_2.Models.FeaturesExample.Answer());
             return result_end;
         }
     }

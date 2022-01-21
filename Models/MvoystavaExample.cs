@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace mather_2.Models
 {
-    class MvoystavaExample
+    class FeaturesExample
     {
         private static string example = "";
         private static int result = 0;
@@ -26,7 +26,7 @@ namespace mather_2.Models
         {
             string outputExample = example;
             int outputresult = result;
-            mather_2.Models.MvoystavaExample.Example(outputExample, outputresult);
+            mather_2.Models.FeaturesExample.Example(outputExample, outputresult);
             return outputExample;
         }
     }

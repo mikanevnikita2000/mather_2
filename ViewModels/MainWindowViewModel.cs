@@ -69,7 +69,6 @@ namespace mather_2.ViewModels
             }
             (IsCorrectTrue, IsCorrectFalse)  = mather_2.Models.Models.AnswerGetter(answer);
         }
-        public string Color = "#ff008000";
 
         public string VariableA
         {
