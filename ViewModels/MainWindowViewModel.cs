@@ -1,10 +1,12 @@
-﻿using ReactiveUI;
+﻿using Avalonia.Media;
+using ReactiveUI;
 using System;
 
 namespace mather_2.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        Models.Models ki = new Models.Models();
         private string _answer = "";
         private int answer ;
         private string _outputExample = "";
@@ -20,7 +22,7 @@ namespace mather_2.ViewModels
 
         public void Start()
         {
-            OutputExample = mather_2.Models.Models.Start(sign);
+            OutputExample = ki.Start(sign);
             ResultEnd = "";
             IsCorrectTrue = "";
             IsCorrectFalse = "";
@@ -29,7 +31,7 @@ namespace mather_2.ViewModels
 
         public void Help()
         {
-            ResultEnd = mather_2.Models.Models.Help();
+            ResultEnd = ki.Help();
         }
 
         public void Addition()
@@ -52,10 +54,10 @@ namespace mather_2.ViewModels
 
         public void Back()
         {
-            OutputExample = mather_2.Models.Models.Back();
+            OutputExample = ki.Back();
         }
 
-        public void AnswerGetter()
+        public void ProcessingAnswer()
         {
             Message = "";
             try
@@ -64,10 +66,33 @@ namespace mather_2.ViewModels
             }
             catch (Exception e)
             {
-                Message = "Пиши цифрами!";
+                Message = "Пиши цифрами!"; 
+                IsCorrectTrue = "";
                 Console.WriteLine(e.Message);
             }
-            (IsCorrectTrue, IsCorrectFalse)  = mather_2.Models.Models.AnswerGetter(answer);
+            (IsCorrectTrue, IsCorrectFalse)  = ki.ProcessingAnswer(answer);
+            MainModel();
+        }
+        private IBrush _textbox3Foreground;
+        public IBrush Textbox3Foreground
+        {
+            get { return _textbox3Foreground; }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _textbox3Foreground, value);
+            }
+        }
+
+        public void MainModel()
+        {
+            if (IsCorrectTrue == "Правильно")
+            {
+                Textbox3Foreground = Avalonia.Media.Brushes.Green;
+            }
+            if (IsCorrectFalse == "Неправильно")
+            {
+                Textbox3Foreground = Avalonia.Media.Brushes.Red;
+            }
         }
 
         public string VariableA

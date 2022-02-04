@@ -4,71 +4,43 @@ namespace mather_2.Models
 {
     public class Models
     {
-        public static string CorrectTrue = "";
-        public static string CorrectFalse = "";
-        public static string sing = "+";
-        public static string result_end = "";
+        ExampleProperties exampleProperties = new ExampleProperties();
 
-        public static string Start(string sang)
+        public  string CorrectTrue = "";
+        public  string CorrectFalse = "";
+        public  string sing = "+";
+        public  string result_end ="";
+        public  string outputExample = "";
+        public int lastResult = 0;
+        public string lastOutPutExample = "";
+        public int result = 0;
+
+        public  string Start(string _sing)
         {
-            sing = sang;
-            CorrectTrue = "";
-            CorrectFalse = "";
-            int variableA=0;
-            int variableB=0;
-            int result = 0;
-            string outputExample = "";
-            Random randomNumber = new Random();
-            if (sing == "/")
-            {
-                result = randomNumber.Next(1, 11);
-                variableB = randomNumber.Next(1, 100);
-                variableA = result * variableB;
-            }
-            if (sing == "*")
-            {
-                variableA = randomNumber.Next(1, 100);
-                variableB = randomNumber.Next(1, 11);
-                result = variableA * variableB;
-            }
-            if (sing == "+")
-            {
-                variableA = randomNumber.Next(100);
-                variableB = randomNumber.Next(100);
-                result = variableA + variableB;
-            }
-            if (sing == "-")
-            {
-               
-                variableA = randomNumber.Next(100);
-                variableB = randomNumber.Next(100);
-                result = variableA - variableB;
-                
-            }
-            outputExample = $"{variableA} {sing} {variableB} = ";
-            mather_2.Models.FeaturesExample.Example(outputExample, result); 
+            sing = _sing;
+            exampleProperties.Example(sing);
+            (outputExample, result) = exampleProperties.Result_finite();
             return outputExample;
         }
 
-        public static string Back()
+        public  string Back()
         {
-            string outputExample = "";
-            (outputExample) = mather_2.Models.FeaturesExample.Back();
-            return outputExample;
+            result = lastResult;
+            return lastOutPutExample;
         }
 
-        public static (string, string) AnswerGetter(int answer)
+        public  (string, string) ProcessingAnswer(int answer)
         {
-            int result = 0;
+            (outputExample, result) = exampleProperties.Result_finite();
             CorrectTrue = "";
             CorrectFalse = "";
-            result = mather_2.Models.FeaturesExample.Answer();
 
             if (answer == result)
             {
                 CorrectTrue = "Правильно";
-                mather_2.Models.FeaturesExample.Back();
-                result_end = "";
+                result_end = Convert.ToString(result);
+                lastResult = result;
+                lastOutPutExample = outputExample;
             }
             else
             {
@@ -77,9 +49,10 @@ namespace mather_2.Models
             return (CorrectTrue, CorrectFalse);
         }
 
-        public static string Help()
+        public  string Help()
         {
-            result_end = Convert.ToString(mather_2.Models.FeaturesExample.Answer());
+            (outputExample, result) = exampleProperties.Result_finite();
+            result_end = Convert.ToString(result);
             return result_end;
         }
     }
