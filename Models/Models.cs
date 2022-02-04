@@ -14,6 +14,7 @@ namespace mather_2.Models
         public int lastResult = 0;
         public string lastOutPutExample = "";
         public int result = 0;
+        public bool back = false;
 
         public  string Start(string _sing)
         {
@@ -25,15 +26,23 @@ namespace mather_2.Models
 
         public  string Back()
         {
-            result = lastResult;
+            back = true;
+            exampleProperties.LastResult(lastResult,back);
+
             return lastOutPutExample;
         }
 
         public  (string, string) ProcessingAnswer(int answer)
         {
             (outputExample, result) = exampleProperties.Result_finite();
+
             CorrectTrue = "";
             CorrectFalse = "";
+            (lastResult, back) = exampleProperties.LastResultBack();
+            if (back == true)
+            {
+                result = lastResult;
+            }
 
             if (answer == result)
             {
@@ -41,6 +50,8 @@ namespace mather_2.Models
                 result_end = Convert.ToString(result);
                 lastResult = result;
                 lastOutPutExample = outputExample;
+                back = false;
+                exampleProperties.LastResult(0, false);
             }
             else
             {

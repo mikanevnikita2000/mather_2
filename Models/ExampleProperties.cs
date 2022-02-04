@@ -7,7 +7,8 @@ namespace mather_2.Models
 
         public  int result = 0;
         public  string outputExample = "";
-        
+        public int lastresult = 0;
+        public bool back = false;
 
         public  void Example(string sing)
         {
@@ -46,6 +47,15 @@ namespace mather_2.Models
         public  (string, int) Result_finite()
         {
             return (outputExample, result);
+        }
+        public void LastResult(int _lastresult,bool _back)
+        {
+            lastresult = _lastresult;
+            back = _back;
+        }
+        public (int,bool) LastResultBack()
+        {
+            return (lastresult,back);
         }
     }
 }
