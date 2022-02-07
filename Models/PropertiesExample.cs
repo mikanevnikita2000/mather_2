@@ -2,60 +2,48 @@
 
 namespace mather_2.Models
 {
-    public class ExampleProperties //свойства примера
+    public class PropertiesExample //свойства примера
     { 
 
         public  int result = 0;
-        public  string outputExample = "";
-        public int lastresult = 0;
-        public bool back = false;
+        public  string visibleExpression = "";
 
-        public  void Example(string sing)
+        public  void Example(string sign)
         {
-            
-            string singExample = sing;
             int variableA = 0;
             int variableB = 0;
             Random randomNumber = new Random();
-            if (singExample == "/")
+            if (sign == "/")
             {
                 result = randomNumber.Next(1, 10);
                 variableB = randomNumber.Next(1, 100);
                 variableA = result * variableB;
             }
-            if (singExample == "*")
+            if (sign == "*")
             {
                 variableA = randomNumber.Next(1, 100);
                 variableB = randomNumber.Next(1, 11);
                 result = variableA * variableB;
             }
-            if (singExample == "+")
+            if (sign == "+")
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
                 result = variableA + variableB;
             }
-            if (singExample == "-")
+            if (sign == "-")
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
                 result = variableA - variableB;
             }
-            outputExample = $"{variableA} {singExample} {variableB} = ";
+            visibleExpression = $"{variableA} {sign} {variableB} = ";
         }
 
-        public  (string, int) Result_finite()
+        public  (string, int) ResultFinite()
         {
-            return (outputExample, result);
+            return (visibleExpression, result);
         }
-        public void LastResult(int _lastresult,bool _back)
-        {
-            lastresult = _lastresult;
-            back = _back;
-        }
-        public (int,bool) LastResultBack()
-        {
-            return (lastresult,back);
-        }
+        
     }
 }

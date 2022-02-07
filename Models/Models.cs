@@ -4,65 +4,62 @@ namespace mather_2.Models
 {
     public class Models
     {
-        ExampleProperties exampleProperties = new ExampleProperties();
+        PropertiesExample propertiesExample = new PropertiesExample();
 
-        public  string CorrectTrue = "";
-        public  string CorrectFalse = "";
-        public  string sing = "+";
-        public  string result_end ="";
-        public  string outputExample = "";
+        public string isCorrect = "";
+        public string sign = "+";
+        public string result_end ="";
+        public string visibleExpression = "";
         public int lastResult = 0;
-        public string lastOutPutExample = "";
-        public int result = 0;
-        public bool back = false;
+        public string lastVisibleExpression = "";
+        public int result = 1;
+        public bool isBack = false;
 
-        public  string Start(string _sing)
+        //PropertiesExample currentExample= null;
+        //PropertiesExample lastExample= null;
+
+
+        public string GeneratingAnExample(string _sign)
         {
-            sing = _sing;
-            exampleProperties.Example(sing);
-            (outputExample, result) = exampleProperties.Result_finite();
-            return outputExample;
+            propertiesExample.Example(_sign);
+            (visibleExpression, result) = propertiesExample.ResultFinite();
+            return visibleExpression;
         }
 
-        public  string Back()
+        public string Back()
         {
-            back = true;
-            exampleProperties.LastResult(lastResult,back);
-
-            return lastOutPutExample;
+            isBack = true;
+            return lastVisibleExpression;
         }
 
-        public  (string, string) ProcessingAnswer(int answer)
+        public string ProcessingAnswer(int answer)
         {
-            (outputExample, result) = exampleProperties.Result_finite();
+            (visibleExpression, result) = propertiesExample.ResultFinite();
 
-            CorrectTrue = "";
-            CorrectFalse = "";
-            (lastResult, back) = exampleProperties.LastResultBack();
-            if (back == true)
+            isCorrect = "";
+           
+            if (isBack == true)
             {
                 result = lastResult;
             }
-
             if (answer == result)
             {
-                CorrectTrue = "Правильно";
+                isCorrect = "Правильно";
                 result_end = Convert.ToString(result);
                 lastResult = result;
-                lastOutPutExample = outputExample;
-                back = false;
-                exampleProperties.LastResult(0, false);
+                lastVisibleExpression = visibleExpression;
+                isBack = false;
             }
             else
             {
-                CorrectFalse = "Неправильно";
+                isCorrect = "Неправильно";
             }
-            return (CorrectTrue, CorrectFalse);
+            return isCorrect;
         }
 
-        public  string Help()
+        public string Help()
         {
-            (outputExample, result) = exampleProperties.Result_finite();
+            (visibleExpression, result) = propertiesExample.ResultFinite();
             result_end = Convert.ToString(result);
             return result_end;
         }

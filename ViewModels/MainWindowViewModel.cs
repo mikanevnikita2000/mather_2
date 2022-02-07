@@ -6,10 +6,10 @@ namespace mather_2.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        Models.Models ki = new Models.Models();
+        Models.Models models = new Models.Models();
         private string _answer = "";
         private int answer ;
-        private string _outputExample = "";
+        private string _visibleExpression = "";
         private string _variableA = "";
         private string _variableB = "";
         private string _result = "";
@@ -17,21 +17,20 @@ namespace mather_2.ViewModels
         private string _resultEnd = "";
         private string _visibleExpressionBack = "";
         private string message = "";
-        private string _isCorrectTrue = "";
-        private string _isCorrectFalse = "";
+        private string _isCorrect = "";
+        private IBrush _colourTextboxCorrect;
 
         public void Start()
         {
-            OutputExample = ki.Start(sign);
+            VisibleExpression = models.GeneratingAnExample(sign);
             ResultEnd = "";
-            IsCorrectTrue = "";
-            IsCorrectFalse = "";
+            IsCorrect = "";
             Message = "";
         }
 
         public void Help()
         {
-            ResultEnd = ki.Help();
+            ResultEnd = models.Help();
         }
 
         public void Addition()
@@ -54,10 +53,10 @@ namespace mather_2.ViewModels
 
         public void Back()
         {
-            OutputExample = ki.Back();
+            VisibleExpression = models.Back();
         }
 
-        public void ProcessingAnswer()
+        public void ErrorChecking()
         {
             Message = "";
             try
@@ -66,32 +65,24 @@ namespace mather_2.ViewModels
             }
             catch (Exception e)
             {
-                Message = "Пиши цифрами!"; 
-                IsCorrectTrue = "";
+                Message = "Пиши цифрами!";
+                IsCorrect = "";
                 Console.WriteLine(e.Message);
             }
-            (IsCorrectTrue, IsCorrectFalse)  = ki.ProcessingAnswer(answer);
-            MainModel();
-        }
-        private IBrush _textbox3Foreground;
-        public IBrush Textbox3Foreground
-        {
-            get { return _textbox3Foreground; }
-            set
-            {
-                this.RaiseAndSetIfChanged(ref _textbox3Foreground, value);
-            }
-        }
 
-        public void MainModel()
+            CheckingExample();
+        }
+        
+        public void CheckingExample()
         {
-            if (IsCorrectTrue == "Правильно")
+            IsCorrect = models.ProcessingAnswer(answer);
+            if (IsCorrect == "Правильно")
             {
-                Textbox3Foreground = Avalonia.Media.Brushes.Green;
+                ColourTextboxCorrect = Avalonia.Media.Brushes.Green;
             }
-            if (IsCorrectFalse == "Неправильно")
+            if (IsCorrect == "Неправильно")
             {
-                Textbox3Foreground = Avalonia.Media.Brushes.Red;
+                ColourTextboxCorrect = Avalonia.Media.Brushes.Red;
             }
         }
 
@@ -125,25 +116,28 @@ namespace mather_2.ViewModels
             get => _answer;
             set => this.RaiseAndSetIfChanged(ref _answer, value);
         }
-        public string IsCorrectTrue
+        public string IsCorrect
         {
-            get => _isCorrectTrue;
-            set => this.RaiseAndSetIfChanged(ref _isCorrectTrue, value);
-        }
-        public string IsCorrectFalse
-        {
-            get => _isCorrectFalse;
-            set => this.RaiseAndSetIfChanged(ref _isCorrectFalse, value);
+            get => _isCorrect;
+            set => this.RaiseAndSetIfChanged(ref _isCorrect, value);
         }
         public string VisibleExpressionBack
         {
             get => _visibleExpressionBack;
             set => this.RaiseAndSetIfChanged(ref _visibleExpressionBack, value);
         }
-        public string OutputExample
+        public string VisibleExpression
         {
-            get => _outputExample;
-            set => this.RaiseAndSetIfChanged(ref _outputExample, value);
+            get => _visibleExpression;
+            set => this.RaiseAndSetIfChanged(ref _visibleExpression, value);
+        }
+        public IBrush ColourTextboxCorrect
+        {
+            get { return _colourTextboxCorrect; }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref _colourTextboxCorrect, value);
+            }
         }
     }
 }
