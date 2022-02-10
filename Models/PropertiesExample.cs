@@ -44,6 +44,20 @@ namespace mather_2.Models
         {
             return (visibleExpression, result);
         }
-        
+        /*public string VisibleExpression
+        {
+            get => visibleExpression;
+            set => visibleExpression = value;
+        }
+        public string ResultFinite
+        {
+            get => visibleExpression;
+            set => visibleExpression = value;
+        }
+
+        private void RaiseAndSetIfChanged(ref string visibleExpression, string value)
+        {
+            throw new NotImplementedException();
+        }*/
     }
 }
