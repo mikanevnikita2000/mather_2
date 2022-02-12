@@ -17,14 +17,14 @@ namespace mather_2.ViewModels
         private string _resultEnd = "";
         private string _visibleExpressionBack = "";
         private string message = "";
-        private string _isCorrect = "";
+        private string _correctnessAnswer = "";
         private IBrush _colourTextboxCorrect;
 
         public void Start()
         {
             VisibleExpression = models.GeneratingAnExample(sign);
             ResultEnd = "";
-            IsCorrect = "";
+            CorrectnessAnswer = "";
             Message = "";
         }
 
@@ -66,7 +66,7 @@ namespace mather_2.ViewModels
             catch (Exception e)
             {
                 Message = "Пиши цифрами!";
-                IsCorrect = "";
+                CorrectnessAnswer = "";
                 Console.WriteLine(e.Message);
             }
 
@@ -75,12 +75,12 @@ namespace mather_2.ViewModels
         
         public void CheckingExample()
         {
-            IsCorrect = models.ProcessingAnswer(answer);
-            if (IsCorrect == "Правильно")
+            CorrectnessAnswer = models.ProcessingAnswer(answer);
+            if (CorrectnessAnswer == "Правильно")
             {
                 ColourTextboxCorrect = Avalonia.Media.Brushes.Green;
             }
-            if (IsCorrect == "Неправильно")
+            if (CorrectnessAnswer == "Неправильно")
             {
                 ColourTextboxCorrect = Avalonia.Media.Brushes.Red;
             }
@@ -116,10 +116,10 @@ namespace mather_2.ViewModels
             get => _answer;
             set => this.RaiseAndSetIfChanged(ref _answer, value);
         }
-        public string IsCorrect
+        public string CorrectnessAnswer
         {
-            get => _isCorrect;
-            set => this.RaiseAndSetIfChanged(ref _isCorrect, value);
+            get => _correctnessAnswer;
+            set => this.RaiseAndSetIfChanged(ref _correctnessAnswer, value);
         }
         public string VisibleExpressionBack
         {

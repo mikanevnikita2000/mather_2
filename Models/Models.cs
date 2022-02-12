@@ -6,7 +6,7 @@ namespace mather_2.Models
     {
         PropertiesExample propertiesExample = new PropertiesExample();
 
-        public string isCorrect = "";
+        public string correctnessAnswer = "";
         public string sign = "+";
         public string result_end ="";
         public string visibleExpression = "";
@@ -22,8 +22,7 @@ namespace mather_2.Models
         public string GeneratingAnExample(string _sign)
         {
             propertiesExample.Example(_sign);
-            (visibleExpression, result) = propertiesExample.ResultFinite();
-            return visibleExpression;
+            return propertiesExample.VisibleExpression; ;
         }
 
         public string Back()
@@ -34,9 +33,9 @@ namespace mather_2.Models
 
         public string ProcessingAnswer(int answer)
         {
-            (visibleExpression, result) = propertiesExample.ResultFinite();
+            result = propertiesExample.ResultFinite;
 
-            isCorrect = "";
+            correctnessAnswer = "";
            
             if (isBack == true)
             {
@@ -44,7 +43,7 @@ namespace mather_2.Models
             }
             if (answer == result)
             {
-                isCorrect = "Правильно";
+                correctnessAnswer = "Правильно";
                 result_end = Convert.ToString(result);
                 lastResult = result;
                 lastVisibleExpression = visibleExpression;
@@ -52,16 +51,14 @@ namespace mather_2.Models
             }
             else
             {
-                isCorrect = "Неправильно";
+                correctnessAnswer = "Неправильно";
             }
-            return isCorrect;
+            return correctnessAnswer;
         }
 
         public string Help()
         {
-            (visibleExpression, result) = propertiesExample.ResultFinite();
-            result_end = Convert.ToString(result);
-            return result_end;
+            return Convert.ToString(propertiesExample.ResultFinite);
         }
     }
 }

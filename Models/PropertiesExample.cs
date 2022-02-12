@@ -15,7 +15,7 @@ namespace mather_2.Models
             Random randomNumber = new Random();
             if (sign == "/")
             {
-                result = randomNumber.Next(1, 10);
+                ResultFinite = randomNumber.Next(1, 10);
                 variableB = randomNumber.Next(1, 100);
                 variableA = result * variableB;
             }
@@ -23,41 +23,33 @@ namespace mather_2.Models
             {
                 variableA = randomNumber.Next(1, 100);
                 variableB = randomNumber.Next(1, 11);
-                result = variableA * variableB;
+                ResultFinite = variableA * variableB;
             }
             if (sign == "+")
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
-                result = variableA + variableB;
+                ResultFinite = variableA + variableB;
             }
             if (sign == "-")
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
-                result = variableA - variableB;
+                ResultFinite = variableA - variableB;
             }
-            visibleExpression = $"{variableA} {sign} {variableB} = ";
+            VisibleExpression = $"{variableA} {sign} {variableB} = ";
         }
-
-        public  (string, int) ResultFinite()
-        {
-            return (visibleExpression, result);
-        }
-        /*public string VisibleExpression
+        public string VisibleExpression
         {
             get => visibleExpression;
             set => visibleExpression = value;
         }
-        public string ResultFinite
+        public int ResultFinite
         {
-            get => visibleExpression;
-            set => visibleExpression = value;
+            get => result;
+            set => result = value;
         }
 
-        private void RaiseAndSetIfChanged(ref string visibleExpression, string value)
-        {
-            throw new NotImplementedException();
-        }*/
+        
     }
 }
