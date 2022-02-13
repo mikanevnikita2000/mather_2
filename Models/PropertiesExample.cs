@@ -49,7 +49,8 @@ namespace mather_2.Models
             get => result;
             set => result = value;
         }
-
         
+        
+
     }
 }
