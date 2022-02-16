@@ -21,14 +21,14 @@ namespace mather_2.Models
 
         public string GeneratingAnExample(string _sign)
         {
-            propertiesExample.Example(_sign);
+            propertiesExample.GeneratExample(_sign);
             return propertiesExample.VisibleExpression; ;
         }
 
         public string Back()
         {
             isBack = true;
-            return lastVisibleExpression;
+            return propertiesExample.LastVisibleExpression;
         }
 
         public string ProcessingAnswer(int answer)
@@ -39,14 +39,14 @@ namespace mather_2.Models
            
             if (isBack == true)
             {
-                result = lastResult;
+                result = propertiesExample.LastResultFinite;
             }
             if (answer == result)
             {
                 correctnessAnswer = "Правильно";
                 result_end = Convert.ToString(result);
-                lastResult = result;
-                lastVisibleExpression = visibleExpression;
+                propertiesExample.LastResultFinite = result;
+                propertiesExample.LastVisibleExpression = visibleExpression;
                 isBack = false;
             }
             else

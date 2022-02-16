@@ -2,13 +2,15 @@
 
 namespace mather_2.Models
 {
-    public class PropertiesExample //свойства примера
+    public class PropertiesExample //AllAboutTheExample
     { 
 
         public  int result = 0;
         public  string visibleExpression = "";
+        public int lastresult = 0;
+        public string lastvisibleExpression = "";
 
-        public  void Example(string sign)
+        public  void GeneratExample(string sign)
         {
             int variableA = 0;
             int variableB = 0;
@@ -49,8 +51,16 @@ namespace mather_2.Models
             get => result;
             set => result = value;
         }
-        
-        
+        public int LastResultFinite
+        {
+            get => lastresult;
+            set => lastresult = value;
+        }
+        public string LastVisibleExpression
+        {
+            get => lastvisibleExpression;
+            set => lastvisibleExpression = value;
+        }
 
     }
 }
