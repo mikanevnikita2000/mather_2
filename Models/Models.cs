@@ -4,7 +4,7 @@ namespace mather_2.Models
 {
     public class Models
     {
-        PropertiesExample propertiesExample = new PropertiesExample();
+        Example example = new Example();
 
         public string correctnessAnswer = "";
         public string sign = "+";
@@ -14,6 +14,8 @@ namespace mather_2.Models
         public string lastVisibleExpression = "";
         public int result = 1;
         public bool isBack = false;
+        public int lastresult = 0;
+        public string lastvisibleExpression = "";
 
         //PropertiesExample currentExample= null;
         //PropertiesExample lastExample= null;
@@ -21,32 +23,32 @@ namespace mather_2.Models
 
         public string GeneratingAnExample(string _sign)
         {
-            propertiesExample.GeneratExample(_sign);
-            return propertiesExample.VisibleExpression; ;
+            example.GeneratExample(_sign);
+            return example.GetVisibleExpression; ;
         }
 
         public string Back()
         {
             isBack = true;
-            return propertiesExample.LastVisibleExpression;
+            return example.GetVisibleExpression;
         }
 
         public string ProcessingAnswer(int answer)
         {
-            result = propertiesExample.ResultFinite;
+            result = example.GetResultFinite;
 
             correctnessAnswer = "";
            
             if (isBack == true)
             {
-                result = propertiesExample.LastResultFinite;
+                result = example.GetResultFinite;
             }
             if (answer == result)
             {
                 correctnessAnswer = "Правильно";
                 result_end = Convert.ToString(result);
-                propertiesExample.LastResultFinite = result;
-                propertiesExample.LastVisibleExpression = visibleExpression;
+                GetLastResultFinite = result;
+                GetLastVisibleExpression = visibleExpression;
                 isBack = false;
             }
             else
@@ -58,7 +60,18 @@ namespace mather_2.Models
 
         public string Help()
         {
-            return Convert.ToString(propertiesExample.ResultFinite);
+            return Convert.ToString(example.GetResultFinite);
+        }
+
+        public int GetLastResultFinite
+        {
+            get => lastresult;
+            set => lastresult = value;
+        }
+        public string GetLastVisibleExpression
+        {
+            get => lastvisibleExpression;
+            set => lastvisibleExpression = value;
         }
     }
 }

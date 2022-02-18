@@ -2,13 +2,14 @@
 
 namespace mather_2.Models
 {
-    public class PropertiesExample //AllAboutTheExample
+    public class Example 
     { 
-
         public  int result = 0;
         public  string visibleExpression = "";
         public int lastresult = 0;
         public string lastvisibleExpression = "";
+
+        public string GetLastVisibleExpression { get; internal set; }
 
         public  void GeneratExample(string sign)
         {
@@ -17,7 +18,7 @@ namespace mather_2.Models
             Random randomNumber = new Random();
             if (sign == "/")
             {
-                ResultFinite = randomNumber.Next(1, 10);
+                GetResultFinite = randomNumber.Next(1, 10);
                 variableB = randomNumber.Next(1, 100);
                 variableA = result * variableB;
             }
@@ -25,42 +26,33 @@ namespace mather_2.Models
             {
                 variableA = randomNumber.Next(1, 100);
                 variableB = randomNumber.Next(1, 11);
-                ResultFinite = variableA * variableB;
+                GetResultFinite = variableA * variableB;
             }
             if (sign == "+")
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
-                ResultFinite = variableA + variableB;
+                GetResultFinite = variableA + variableB;
             }
             if (sign == "-")
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
-                ResultFinite = variableA - variableB;
+                GetResultFinite = variableA - variableB;
             }
-            VisibleExpression = $"{variableA} {sign} {variableB} = ";
+            GetVisibleExpression = $"{variableA} {sign} {variableB} = ";
         }
-        public string VisibleExpression
+        public string GetVisibleExpression
         {
             get => visibleExpression;
             set => visibleExpression = value;
         }
-        public int ResultFinite
+        public int GetResultFinite
         {
             get => result;
             set => result = value;
         }
-        public int LastResultFinite
-        {
-            get => lastresult;
-            set => lastresult = value;
-        }
-        public string LastVisibleExpression
-        {
-            get => lastvisibleExpression;
-            set => lastvisibleExpression = value;
-        }
+        
 
     }
 }
