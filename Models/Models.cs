@@ -5,21 +5,12 @@ namespace mather_2.Models
     public class Models
     {
         Example example = new Example();
+        LastExample lastExample = new LastExample();
 
         public string correctnessAnswer = "";
         public string sign = "+";
-        public string result_end ="";
-        public string visibleExpression = "";
-        public int lastResult = 0;
-        public string lastVisibleExpression = "";
-        public int result = 1;
-        public bool isBack = false;
-        public int lastresult = 0;
-        public string lastvisibleExpression = "";
-
         //PropertiesExample currentExample= null;
         //PropertiesExample lastExample= null;
-
 
         public string GeneratingAnExample(string _sign)
         {
@@ -29,27 +20,19 @@ namespace mather_2.Models
 
         public string Back()
         {
-            isBack = true;
-            return example.GetVisibleExpression;
+            example.GetResultFinite = lastExample.GetLastResultFinite;
+            return lastExample.GetLastVisibleExpression;
         }
 
         public string ProcessingAnswer(int answer)
         {
-            result = example.GetResultFinite;
-
             correctnessAnswer = "";
            
-            if (isBack == true)
-            {
-                result = example.GetResultFinite;
-            }
-            if (answer == result)
+            if (answer == example.GetResultFinite)
             {
                 correctnessAnswer = "Правильно";
-                result_end = Convert.ToString(result);
-                GetLastResultFinite = result;
-                GetLastVisibleExpression = visibleExpression;
-                isBack = false;
+                lastExample.GetLastResultFinite = example.GetResultFinite;
+                lastExample.GetLastVisibleExpression = example.GetVisibleExpression;
             }
             else
             {
@@ -63,15 +46,6 @@ namespace mather_2.Models
             return Convert.ToString(example.GetResultFinite);
         }
 
-        public int GetLastResultFinite
-        {
-            get => lastresult;
-            set => lastresult = value;
-        }
-        public string GetLastVisibleExpression
-        {
-            get => lastvisibleExpression;
-            set => lastvisibleExpression = value;
-        }
+       
     }
 }
