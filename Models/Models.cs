@@ -4,35 +4,32 @@ namespace mather_2.Models
 {
     public class Models
     {
-        Example example = new Example();
-        LastExample lastExample = new LastExample();
+        Example example = null;
+        Example lastExample = null;
 
         public string correctnessAnswer = "";
         public string sign = "+";
-        //PropertiesExample currentExample= null;
-        //PropertiesExample lastExample= null;
 
         public string GeneratingAnExample(string _sign)
         {
-            example.GeneratExample(_sign);
-            return example.GetVisibleExpression; ;
+            example = new Example(_sign);
+            return example.VisibleExpression; ;
         }
 
         public string Back()
         {
-            example.GetResultFinite = lastExample.GetLastResultFinite;
-            return lastExample.GetLastVisibleExpression;
+            example = lastExample;
+            return lastExample.VisibleExpression;
         }
 
         public string ProcessingAnswer(int answer)
         {
             correctnessAnswer = "";
            
-            if (answer == example.GetResultFinite)
+            if (answer == example.ResultFinite)
             {
                 correctnessAnswer = "Правильно";
-                lastExample.GetLastResultFinite = example.GetResultFinite;
-                lastExample.GetLastVisibleExpression = example.GetVisibleExpression;
+                lastExample = example;
             }
             else
             {
@@ -43,7 +40,7 @@ namespace mather_2.Models
 
         public string Help()
         {
-            return Convert.ToString(example.GetResultFinite);
+            return Convert.ToString(example.ResultFinite);
         }
 
        

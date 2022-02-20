@@ -7,43 +7,43 @@ namespace mather_2.Models
         public  int result = 0;
         public  string visibleExpression = "";
 
-        public  void GeneratExample(string sign)
+        public  Example(string sign)
         {
             int variableA = 0;
             int variableB = 0;
             Random randomNumber = new Random();
             if (sign == "/")
             {
-                GetResultFinite = randomNumber.Next(1, 10);
+                ResultFinite = randomNumber.Next(1, 10);
                 variableB = randomNumber.Next(1, 100);
-                variableA = GetResultFinite * variableB;
+                variableA = ResultFinite * variableB;
             }
             if (sign == "*")
             {
                 variableA = randomNumber.Next(1, 100);
                 variableB = randomNumber.Next(1, 11);
-                GetResultFinite = variableA * variableB;
+                ResultFinite = variableA * variableB;
             }
             if (sign == "+")
             {
                 variableA = randomNumber.Next(100);
                 variableB = randomNumber.Next(100);
-                GetResultFinite = variableA + variableB;
+                ResultFinite = variableA + variableB;
             }
             if (sign == "-")
             {
-                GetResultFinite = randomNumber.Next(1, 100);
+                ResultFinite = randomNumber.Next(1, 100);
                 variableB = randomNumber.Next(1, 100);
-                variableA = GetResultFinite + variableB;
+                variableA = ResultFinite + variableB;
             }
-            GetVisibleExpression = $"{variableA} {sign} {variableB} = ";
+            VisibleExpression = $"{variableA} {sign} {variableB} = ";
         }
-        public string GetVisibleExpression
+        public string VisibleExpression
         {
             get => visibleExpression;
             set => visibleExpression = value;
         }
-        public int GetResultFinite
+        public int ResultFinite
         {
             get => result;
             set => result = value;

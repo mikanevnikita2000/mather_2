@@ -4,7 +4,7 @@ using System;
 
 namespace mather_2.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : ReactiveObject
     {
         Models.Models models = new Models.Models();
         private string _answer = "";
